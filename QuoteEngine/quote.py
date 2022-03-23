@@ -1,5 +1,6 @@
 
-class QuoteModel:
+class QuoteModel(object):
+    """ A 'QuoteModel' class. """
     def __init__(self, body: str, author: str):
         """Create a new 'QuoteModel'.
 
@@ -9,10 +10,6 @@ class QuoteModel:
         self.body = body
         self.author = author
 
-    def __repr__(self):
-        """Return ”body text” - author, a computer-readable string representation of this object."""
-        return f'\"{self.body}\" - {self.author}'
-
     def __str__(self):
-        """Return 'str(self)'."""
+        """ Return 'str(self)'. """
         return f'{self.body} - {self.author}'

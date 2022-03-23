@@ -1,14 +1,15 @@
+""" An engine which provides a CLI for interacting with the meme generator. """
+
 import os
 import random
+from argparse import ArgumentParser
 
-# @TODO Import your Ingestor and MemeEngine classes
+from Ingestors import Ingestor
+from QuoteEngine import MemeEngine, QuoteModel
 
 
 def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given an path and a quote """
-    img = None
-    quote = None
-
+    """ Generate a meme given a path and a quote. """
     if path is None:
         images = "./_data/photos/dog/"
         imgs = []
@@ -24,10 +25,7 @@ def generate_meme(path=None, body=None, author=None):
                        './_data/DogQuotes/DogQuotesDOCX.docx',
                        './_data/DogQuotes/DogQuotesPDF.pdf',
                        './_data/DogQuotes/DogQuotesCSV.csv']
-        quotes = []
-        for f in quote_files:
-            quotes.extend(Ingestor.parse(f))
-
+        quotes = [Ingestor.parse(f) for f in quote_files]
         quote = random.choice(quotes)
     else:
         if author is None:
@@ -36,13 +34,17 @@ def generate_meme(path=None, body=None, author=None):
 
     meme = MemeEngine('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
+
     return path
 
 
 if __name__ == "__main__":
-    # @TODO Use ArgumentParser to parse the following CLI arguments
-    # path - path to an image file
-    # body - quote body to add to the image
-    # author - quote author to add to the image
-    args = None
+    parser = ArgumentParser(description='Generate a meme!')
+    parser.add_argument('--path', type=str, required=False, nargs='?',
+                        default=None, help='Path to the image.')
+    parser.add_argument('--body', type=str, required=False, nargs='?',
+                        default=None, help='Body of the quote.')
+    parser.add_argument('--author', type=str, required=False, nargs='?',
+                        default=None, help='Author of the quote.')
+    args = parser.parse_args()
     print(generate_meme(args.path, args.body, args.author))

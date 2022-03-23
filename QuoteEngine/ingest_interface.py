@@ -1,14 +1,19 @@
 from abc import ABC, abstractmethod
+from typing import List
+
+from .quote import QuoteModel
 
 
 class IngestorInterface(ABC):
-    def __init__(self):
-        pass
+    """ An ingestor interface class. """
+    allowed_extensions = ['csv', 'docx', 'pdf', 'txt']
 
     @classmethod
     def can_ingest(cls, path: str) -> bool:
-        pass
+        ext = path.split('.')[-1]
+        return ext in cls.allowed_extensions
 
     @classmethod
-    def parse(cls, path: str) -> list:
+    @abstractmethod
+    def parse(cls, path: str) -> List[QuoteModel]:
         pass
