@@ -37,9 +37,11 @@ class MemeEngine:
 
         if body and height:
             draw = ImageDraw.Draw(img)
-            font = ImageFont.truetype('./_data/fonts/LilitaOne-Regular.ttf', size=20)
+            font = ImageFont.truetype('./_data/fonts/LilitaOne-Regular.ttf',
+                                      size=20)
             font_position = random.choice(range(20, height - 40))
-            draw.text((50, font_position), f'{body} - {author}', font=font, fill='white', stroke_fill='black')
+            draw.text((50, font_position), f'{body} - {author}', font=font,
+                      fill='white', stroke_fill='black')
 
         rand_num = random.randint(0, 1000)
         out_file = os.path.join(self.out_dir, f'./meme_{rand_num}.jpg')

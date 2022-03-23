@@ -15,6 +15,7 @@ class CSVIngestor(IngestorInterface):
             raise Exception(f'Cannot ingest extension: {path}')
 
         df = pd.read_csv(path, header=0)
-        quotes_list = [QuoteModel(row['body'], row['author']) for index, row in df.iterrows()]
+        quotes_list = [QuoteModel(row['body'], row['author'])
+                       for index, row in df.iterrows()]
 
         return quotes_list
