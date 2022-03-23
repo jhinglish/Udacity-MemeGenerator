@@ -23,16 +23,18 @@ def setup():
                    './_data/DogQuotes/DogQuotesPDF.pdf',
                    './_data/DogQuotes/DogQuotesCSV.csv']
 
-    try:
-        quotes_list = [Ingestor.parse(f) for f in quote_files]
-    except ValueError as error:
-        print(error)
+    quotes_list = []
+    for f in quote_files:
+        try:
+            quotes_list.extend(Ingestor.parse(f))
+        except ValueError as error:
+            print(error)
 
     images_path = './_data/photos/dog/'
     imgs_list = []
 
     for filename in os.listdir(images_path):
-        im = Image.open(f'{images_path}/{filename}')
+        im = f'{images_path}/{filename}'
         imgs_list.append(im)
 
     return quotes_list, imgs_list
@@ -76,4 +78,4 @@ def meme_post():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
