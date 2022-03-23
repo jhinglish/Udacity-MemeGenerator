@@ -18,7 +18,7 @@ class MemeEngine:
         if not os.path.exists(out_dir):
             os.makedirs(out_dir)
 
-    def make_meme(self, img_path, body, author, width: int = 500) -> str:
+    def make_meme(self, img_path, body, author, width=500) -> str:
         """
         Create meme from image, body, and author.
 
