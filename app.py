@@ -13,7 +13,7 @@ from QuoteEngine import MemeEngine
 
 app = Flask(__name__)
 
-meme = MemeEngine('./static')
+meme = MemeEngine('./Memes/Web')
 
 
 def setup():
@@ -78,4 +78,4 @@ def meme_post():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
