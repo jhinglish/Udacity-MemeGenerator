@@ -49,7 +49,8 @@ Arguments for the CLI and Web App can be found [here](#Setup).
   - The currently allowed file extensions are `'csv', 'docx', 'pdf', 'txt'`.
 
 ##### QuoteEngine
-- These sub-modules contain the classes and functions to handle the quotes and images. 
+- These sub-modules contain the classes and functions to handle the quotes and images.
+  - [meme_engine.py](./QuoteEngine/meme_engine.py) applies the font (eg. [LilitaOne-Regular](./_data/fonts/LilitaOne-Regular.ttf)) on line 40. This can be changed once the relevant file has been added to `./_data/fonts`.
 
 _____
 
@@ -57,3 +58,10 @@ _____
 ##### :bust_in_silhouette: Jonathan Hing
 - Github: [@Jhinglish](https://github.com/jhinglish)
 - LinkedIn: [Jonathan hing](https://www.linkedin.com/in/jonathan-hing-87693665)
+
+_____
+
+# Contributors :sparkles:
+
+- Sample [data](./_data) for quotes and images, as well as [html templates](./templates) provided by Udacity.
+- [LilitaOne-Regular.ttf](https://fonts.google.com/specimen/Lilita+One) font.
