@@ -27,21 +27,20 @@ def generate_meme(path=None, body=None, author=None):
                        './_data/DogQuotes/DogQuotesCSV.csv']
         quotes = []
         for f in quote_files:
-            new_quote = Ingestor.parse(f)
-            quotes.extend(new_quote)
+            quotes.extend(Ingestor.parse(f))
         quote = random.choice(quotes)
     else:
         if author is None:
             raise Exception('Author Required if Body is Used')
         quote = QuoteModel(body, author)
 
-    meme = MemeEngine('./Memes/CLI')
+    meme = MemeEngine('./Memes_CLI')
     path = meme.make_meme(img, quote.body, quote.author)
 
     return path
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = ArgumentParser(description='Generate a meme!')
     parser.add_argument('--path', type=str, required=False, nargs='?',
                         default=None, help='Path to the image.')

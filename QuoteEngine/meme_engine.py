@@ -30,12 +30,12 @@ class MemeEngine:
         """
         img = Image.open(img_path)
 
-        width = 500 if width > 500 else width
-        ratio = width / img.size[0]
+        new_width = 500 if width > 500 else width
+        ratio = new_width / img.size[0]
         height = int(ratio * img.size[1])
-        img = img.resize((width, height), Image.NEAREST)
+        img = img.resize((new_width, height), Image.NEAREST)
 
-        if body and height:
+        if body:
             draw = ImageDraw.Draw(img)
             font = ImageFont.truetype('./_data/fonts/LilitaOne-Regular.ttf',
                                       size=20)
@@ -44,7 +44,7 @@ class MemeEngine:
                       fill='white', stroke_fill='black')
 
         rand_num = random.randint(0, 1000)
-        out_file = os.path.join(self.out_dir, f'./meme_{rand_num}.jpg')
+        out_file = os.path.join(self.out_dir, f'meme_{rand_num}.jpg')
         img.save(out_file, 'JPEG')
 
         return out_file

@@ -1,6 +1,5 @@
 """ A GUI for the meme generator. """
 
-from PIL import Image
 from flask import Flask, render_template, request
 import requests
 
@@ -13,11 +12,11 @@ from QuoteEngine import MemeEngine
 
 app = Flask(__name__)
 
-meme = MemeEngine('./Memes/Web')
+meme = MemeEngine('./static')
 
 
 def setup():
-    """ Load all resources """
+    """ Load all resources. """
     quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
                    './_data/DogQuotes/DogQuotesDOCX.docx',
                    './_data/DogQuotes/DogQuotesPDF.pdf',
@@ -45,7 +44,7 @@ quotes, imgs = setup()
 
 @app.route('/')
 def meme_rand():
-    """ Generate a random meme """
+    """ Generate a random meme. """
     img = random.choice(imgs)
     quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
@@ -54,13 +53,13 @@ def meme_rand():
 
 @app.route('/create', methods=['GET'])
 def meme_form():
-    """ User input for meme information """
+    """ User input for meme information. """
     return render_template('meme_form.html')
 
 
 @app.route('/create', methods=['POST'])
 def meme_post():
-    """ Create a user defined meme """
+    """ Create a user defined meme. """
     img = './temp_img.jpg'
     img_url = request.form.get('image_url')
     img_content = requests.get(img_url, stream=True).content
@@ -78,4 +77,4 @@ def meme_post():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

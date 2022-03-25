@@ -18,7 +18,7 @@ flask run --host localhost --port 3000 --reload
 
 #### Web App Features
 - Navigate to [https://localhost:3000](https://localhost:3000) in your browser.
-- Randomly generate memes. These will be stored in `./Memes/Web`.
+- Randomly generate memes. These will be stored in `./Memes_Web`.
 - Custom memes can also be generated after inputting the relevant information, by clicking on "Create".
 
 #### Command Line Interface (CLI) Features
@@ -26,7 +26,7 @@ Via your terminal:
 - Run `python meme.py`.
   - This will generate a random meme using a random image from `./_data/photos/dog/` and a random quote from one of the files in `./_data/DogQuotes/`.
   - Quotes and images may be edited/added in the relevant folders, and memes will be randomly generated accordingly.
-  - Memes will be stored in `./Memes/CLI`.
+  - Memes will be stored in `./Memes_CLI`.
 - Running `python meme.py` with these optional parameters will allow for further customization.
   - Using `--path <path/to/image>` will allow for a specific image to be used.
   - Using `--body "Insert quote here" --author "Name"` will allow for a custom quote and author to be added to the image.
